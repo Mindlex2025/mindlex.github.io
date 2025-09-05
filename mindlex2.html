@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Mindlex</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --roxo: #7c3aed;
+      --rosa: #f472b6;
+      --azul: #38bdf8;
+      --verde-agua: #2dd4bf;
+      --fundo: #f8fafc;
+      --texto: #22223b;
+      --branco: #fff;
+    }
+
+    body {
+      font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+      background: var(--fundo);
+      color: var(--texto);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--roxo), var(--rosa), var(--azul), var(--verde-agua));
+      color: var(--branco);
+      padding: 40px 0 30px 0;
+      text-align: center;
+      border-bottom-left-radius: 60px 30px;
+      border-bottom-right-radius: 60px 30px;
+      box-shadow: 0 4px 24px rgba(124,58,237,0.12);
+    }
+
+    header img {
+      max-width: 180px;
+      margin-bottom: 10px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      background: var(--branco);
+      margin: -30px auto 0 auto;
+      padding: 18px 0;
+      border-radius: 30px;
+      width: 80%;
+      box-shadow: 0 2px 12px rgba(56,189,248,0.08);
+      position: relative;
+      z-index: 2;
+    }
+
+    nav a {
+      color: var(--roxo);
+      text-decoration: none;
+      font-size: 1.2em;
+      font-weight: bold;
+      padding: 8px 18px;
+      border-radius: 20px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    nav a:hover {
+      background: var(--azul);
+      color: var(--branco);
+    }
+
+    main {
+      max-width: 950px;
+      margin: 60px auto;
+      padding: 40px 30px;
+      background: var(--branco);
+      border-radius: 40px;
+      box-shadow: 0 8px 32px rgba(60,0,80,0.08);
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      color: var(--roxo);
+      font-size: 2em;
+      font-weight: bold;
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 30px;
+      justify-content: center;
+    }
+
+    .card {
+      background: linear-gradient(135deg, var(--azul) 60%, var(--verde-agua) 100%);
+      color: var(--branco);
+      border-radius: 30px;
+      padding: 30px 24px;
+      width: 270px;
+      min-height: 220px;
+      box-shadow: 0 4px 24px rgba(56,189,248,0.13);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s, box-shadow 0.3s, min-height 0.3s;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .card:nth-child(2) {
+      background: linear-gradient(135deg, var(--roxo) 60%, var(--rosa) 100%);
+    }
+
+    .card:nth-child(3) {
+      background: linear-gradient(135deg, var(--verde-agua) 60%, var(--azul) 100%);
+    }
+
+    .card img {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 18px;
+      background: var(--branco);
+      border-radius: 50%;
+      padding: 8px;
+      box-shadow: 0 2px 12px rgba(60,0,80,0.10);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+
+    .card p {
+      font-size: 1.1em;
+      text-align: center;
+      margin: 10px 0 0;
+    }
+
+    .card .desc-maior {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.3s, max-height 0.3s, padding 0.3s;
+      font-size: 0.95em;
+      margin-top: 18px;
+      background: rgba(255,255,255,0.13);
+      color: #fff;
+      border-radius: 18px;
+      padding: 0 14px;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .btn-jogar {
+      display: none;
+      margin-top: 18px;
+      background: var(--branco);
+      color: var(--roxo);
+      border: none;
+      border-radius: 16px;
+      padding: 10px 28px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(60,0,80,0.10);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-jogar:hover {
+      background: var(--roxo);
+      color: var(--branco);
+    }
+
+    .card:hover,
+    .card:focus-within {
+      transform: scale(1.05);
+      box-shadow: 0 8px 32px rgba(60,0,80,0.18);
+      min-height: 320px;
+      z-index: 2;
+    }
+
+    .card:hover .desc-maior,
+    .card:focus-within .desc-maior {
+      opacity: 1;
+      max-height: 200px;
+      padding: 14px;
+      pointer-events: auto;
+    }
+
+    .card:hover .btn-jogar,
+    .card:focus-within .btn-jogar {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      padding: 20px 10px;
+      color: var(--texto);
+      background: var(--fundo);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 900px) {
+      main { padding: 20px 10px; }
+      .cards { flex-direction: column; align-items: center; }
+      .card { width: 90%; }
+      nav { width: 95%; }
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2em; }
+      .card { padding: 20px 12px; }
+      nav { gap: 15px; font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo Mindlex">
+  </header>
+
+  <nav>
+    <a href="#">Início</a>
+    <a href="#">Jogos</a>
+    <a href="#">Histórias</a>
+    <a href="#">Contato</a>
+  </nav>
+
+  <main>
+    <h2>Jogos</h2>
+    <div class="cards">
+      <div class="card" tabindex="0">
+        <img src="https://img.icons8.com/?size=100&id=pcD8bVCCf7dC&format=png&color=000000" alt="Jogo da Memória">
+        <h3>Jogo da Memória</h3>
+        <p>Encontre os pares de cartas iguais.</p>
+        <div class="desc-maior">
+          Este jogo ajuda no reconhecimento visual e na concentração, associando palavras e imagens.
+        </div>
+        <button class="btn-jogar" onclick="alert('Iniciar Jogo da Memória')">Jogar</button>
+      </div>
+
+      <div class="card" tabindex="0">
+        <img src="https://img.icons8.com/?size=100&id=12782&format=png&color=000000" alt="Formação de Palavras">
+        <h3>Formação de Palavras</h3>
+        <p>Arraste letras e forme palavras.</p>
+        <div class="desc-maior">
+          Reforça a ortografia, vocabulário e a construção correta das palavras com diversão.
+        </div>
+        <button class="btn-jogar" onclick="alert('Iniciar Formação de Palavras')">Jogar</button>
+      </div>
+
+      <div class="card" tabindex="0">
+        <img src="https://img.icons8.com/color/96/000000/pencil-tip.png" alt="Ditado Interativo">
+        <h3>Ditado Interativo</h3>
+        <p>Ouça e escreva corretamente.</p>
+        <div class="desc-maior">
+          Desenvolve habilidades de escuta e escrita, reforçando a relação entre som e grafia.
+        </div>
+        <button class="btn-jogar" onclick="alert('Iniciar Ditado Interativo')">Jogar</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Mindlex | Desenvolvido por: Luigi Michilin |  Davi André |  Lucas Almeida
+  </footer>
+</body>
+</html>
